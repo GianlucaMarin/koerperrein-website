@@ -1,381 +1,220 @@
 # KörperRein - Body Detox Website
 
-Professionelle Website für KörperRein, ein Schweizer Body Detox Service, der Ganzkörper-Entgiftung mittels Elektrolyse-Fussbad anbietet.
+> Professional business website for a Swiss wellness company specializing in body detoxification treatments
+
+**[View Live Demo](#)** • **[See Documentation](docs/)**
 
 ---
 
-## 📋 Projektübersicht
+## 📋 Project Overview
 
-KörperRein ist eine statische Website, die Informationen über Body Detox-Behandlungen bereitstellt, Buchungsanfragen ermöglicht und Kunden über Gesundheit und Entgiftung informiert.
+**Client:** KörperRein - Swiss wellness business offering electrolysis foot bath body detox treatments
+**Challenge:** Transform Wix-based inspiration into a professional, custom-coded business website
+**Outcome:** Clean, responsive, and professional website built from scratch
 
-**Website:** [www.koerperrein.ch](https://www.koerperrein.ch)
+This project demonstrates modern web development practices, from design system creation to structured implementation workflows.
 
-**Kernfunktionen:**
-- Informationen über Body Detox Elektrolysebad-Behandlung
-- Kontaktformular für Buchungsanfragen
-- Blog mit Gesundheits- und Detox-Tipps
-- Herunterladbare Informationsmaterialien (PDFs)
-- Responsive Design (Mobile, Tablet, Desktop)
+---
+
+## ✨ Key Features
+
+### **🎨 Design & User Experience**
+- **Fully Responsive Design** - Mobile-first approach with seamless tablet and desktop experiences
+- **Custom Design System** - Cohesive color palette, typography, and spacing scales
+- **Accessibility-First** - WCAG 2.1 AA compliant with semantic HTML and ARIA labels
+
+### **💼 Business Features**
+- **Multi-page Structure** - Home, Body Detox, About Us, Blog, Contact, FAQ
+- **Contact Form** - Client inquiry system with validation
+- **Downloadable Resources** - PDF information flyers for clients
+- **Social Media Integration** - Facebook, Instagram, TikTok links
+
+### **⚡ Technical Highlights**
+- **Zero Dependencies** - Pure HTML, CSS, and Vanilla JavaScript
+- **Performance-Optimized** - Fast loading times, optimized images
+- **SEO-Ready** - Proper meta tags, semantic structure, sitemap-ready
+- **Clean Architecture** - Modular CSS, reusable components, maintainable code
 
 ---
 
 ## 🛠 Tech Stack
 
-**Frontend:**
-- HTML5 (semantisches Markup)
-- CSS3 (Custom Properties, Flexbox, Grid)
-- Vanilla JavaScript (ES6+)
+**Frontend**
+- HTML5 - Semantic markup for accessibility and SEO
+- CSS3 - Custom properties, Grid, Flexbox
+- Vanilla JavaScript - ES6+ for interactive features
 
-**Styling:**
-- Custom CSS mit Design System (siehe [.claude/CLAUDE.md](.claude/CLAUDE.md))
-- Google Fonts (Montserrat, Open Sans)
+**Design System**
+- Custom CSS variables for theming
+- Mobile-first responsive breakpoints
+- Modular component architecture
 
-**Entwicklung:**
-- Live Server (VS Code Extension) oder Python SimpleHTTPServer
-- Keine Build-Tools erforderlich (statische Website)
+**Development Workflow**
+- Structured PRD → Tasks → Implementation process
+- Visual validation with Playwright MCP
+- AI-assisted development with Claude Code
 
-**Deployment:**
-- Netlify (empfohlen) oder Vercel
-- Automatisches SSL/HTTPS
-- Integrierte Formular-Funktionalität
-
----
-
-## 🚀 Lokale Entwicklung
-
-### Voraussetzungen
-
-- Moderner Webbrowser (Chrome, Firefox, Safari, Edge)
-- Code Editor (empfohlen: VS Code)
-- Optional: Python 3.x (für SimpleHTTPServer)
-
-### Setup-Anleitung
-
-1. **Repository klonen:**
-   ```bash
-   cd /path/to/your/workspace
-   # Falls Git-Repo vorhanden:
-   git clone <repository-url>
-   cd meine-webseite
-   ```
-
-2. **Lokalen Development Server starten:**
-
-   **Option A: VS Code Live Server (empfohlen)**
-   - Installiere die [Live Server Extension](https://marketplace.visualstudio.com/items?itemName=ritwickdey.LiveServer)
-   - Öffne das Projekt in VS Code
-   - Rechtsklick auf `index.html` → "Open with Live Server"
-   - Website öffnet sich automatisch unter `http://localhost:5500`
-
-   **Option B: Python SimpleHTTPServer**
-   ```bash
-   # Python 3:
-   python3 -m http.server 8000
-
-   # Dann im Browser öffnen:
-   # http://localhost:8000
-   ```
-
-   **Option C: Serve.sh Script (optional)**
-   ```bash
-   chmod +x serve.sh
-   ./serve.sh
-   ```
-
-3. **Website im Browser öffnen:**
-   - Navigiere zu `http://localhost:5500` (Live Server) oder `http://localhost:8000` (Python)
+**No Frameworks** - Lightweight, fast, and easy to maintain
 
 ---
 
-## 📁 Projektstruktur
+## 💡 Development Process
+
+### **Structured Workflow**
+This project followed a professional development approach:
+
+1. **Product Requirements Document (PRD)** - Defined goals, features, and technical specs
+2. **Task Breakdown** - Granular implementation tasks with clear deliverables
+3. **Iterative Development** - Build, test, refine cycle
+4. **Visual Validation** - Playwright-based screenshot validation for design accuracy
+
+### **Design System from Scratch**
+Created a comprehensive design system including:
+- Color palette (primary, secondary, accent, success colors)
+- Typography scale (headings, body, line heights)
+- Spacing system (xs → 3xl)
+- Component library (buttons, cards, forms, navigation)
+- Responsive breakpoints
+
+### **AI-Assisted Development**
+Leveraged Claude Code for:
+- Rapid prototyping
+- Design system implementation
+- Code review and optimization
+- Visual testing automation
+
+---
+
+## 🎯 What I Built & Learned
+
+### **Technical Skills**
+- ✅ Professional website design and development
+- ✅ Custom design system architecture
+- ✅ Responsive design patterns (mobile-first approach)
+- ✅ Accessibility best practices (WCAG 2.1 AA)
+- ✅ Performance optimization techniques
+
+### **Process & Workflow**
+- ✅ Structured development workflow (PRD → Tasks → Code)
+- ✅ Design system documentation
+- ✅ Visual regression testing with Playwright
+- ✅ AI-assisted development practices
+
+### **Client Work**
+- ✅ Requirements gathering and analysis
+- ✅ Brand consistency (translating Wix design to custom code)
+- ✅ Professional communication
+- ✅ Deliverable-focused development
+
+---
+
+## 📁 Project Structure
 
 ```
-meine-webseite/
-├── .claude/
-│   ├── CLAUDE.md              # Design System & Projekt-Kontext
-│   └── agents/
-│       └── design-reviewer.md # Design-Review Agent
-├── cursor-rules/
-│   ├── create-prd.md          # PRD-Erstellungs-Workflow
-│   └── generate-tasks.md      # Task-Generierungs-Workflow
-├── docs/
-│   ├── KoerperRein-PRD.md     # Product Requirements Document
-│   └── KoerperRein-Tasks.md   # Detaillierte Task-Liste
+koerperrein-website/
 ├── css/
-│   ├── reset.css              # CSS Reset/Normalize
-│   ├── variables.css          # Design System Variablen
-│   ├── global.css             # Globale Styles & Typografie
-│   └── components.css         # Komponenten-Styles
+│   ├── reset.css              # CSS reset
+│   ├── variables.css          # Design system tokens
+│   ├── global.css             # Global styles & typography
+│   └── components.css         # Component styles
 ├── js/
-│   ├── main.js                # Haupt-JavaScript
-│   └── navigation.js          # Mobile Navigation
+│   ├── navigation.js          # Mobile nav & header/footer injection
+│   ├── contact-form.js        # Form validation & submission
+│   └── faq.js                 # FAQ accordion functionality
 ├── assets/
-│   ├── images/                # Bilder (Hero, Behandlung, Blog)
-│   ├── downloads/             # PDF-Flyer
-│   └── icons/                 # SVG Icons (Social Media)
+│   ├── images/                # Optimized images
+│   ├── downloads/             # PDF flyers
+│   └── icons/                 # SVG icons
+├── includes/
+│   ├── header.html            # Global navigation
+│   └── footer.html            # Global footer
+├── docs/
+│   ├── KoerperRein-PRD.md     # Product requirements
+│   └── KoerperRein-Tasks.md   # Implementation tasks
 ├── index.html                 # Homepage
-├── body-detox.html            # Body Detox Informationsseite
-├── ueber-uns.html             # Über Uns
-├── blog.html                  # Blog Übersicht
-├── kontakt.html               # Kontaktseite mit Formular
-├── faq.html                   # FAQ
-├── agb.html                   # AGB & Datenschutz
-└── README.md                  # Diese Datei
+├── body-detox.html            # Treatment information
+├── ueber-uns.html             # About page
+├── kontakt.html               # Contact page
+├── blog.html                  # Blog overview
+├── faq.html                   # FAQ page
+└── agb.html                   # Terms & privacy
 ```
 
 ---
 
-## 🎨 Design System
+## 🚀 Quick Start
 
-Das vollständige Design System ist in [.claude/CLAUDE.md](.claude/CLAUDE.md) dokumentiert.
+**Run Locally**
+```bash
+# Clone the repository
+git clone https://github.com/GianlucaMarin/koerperrein-website.git
+cd koerperrein-website
 
-**Farbpalette:**
-- Primary (Teal): `#2A9D8F` - Wasser, Reinigung, Ruhe
-- Secondary (Coral): `#E76F51` - Energie, Vitalität
-- Accent (Golden Orange): `#F4A261` - Wellness, Wärme
+# Serve with any HTTP server
+python3 -m http.server 8000
 
-**Typografie:**
-- Headings: Montserrat (Modern, Clean)
-- Body: Open Sans (Lesbar, Freundlich)
+# Open in browser
+# http://localhost:8000
+```
 
-**Breakpoints:**
+**Deploy**
+- Deploy to Netlify, Vercel, or any static hosting
+- No build process required
+- Configure contact form with Netlify Forms or Formspree
+
+---
+
+## 📸 Screenshots
+
+*Coming soon - Homepage, Body Detox page, Contact form*
+
+---
+
+## 🎨 Design System Highlights
+
+**Color Palette**
+- Primary (Olive): `#5D5A3F` - Calm, premium wellness feel
+- Accent (Beige): `#B8AE9F` - Natural, organic aesthetic
+- Success (Green): `#52B788` - Health and renewal
+
+**Typography**
+- Headings: Montserrat (modern, clean)
+- Body: Open Sans (readable, friendly)
+- Serif accents: Playfair Display (elegance)
+
+**Responsive Breakpoints**
 - Mobile: < 768px
 - Tablet: 768px - 1024px
 - Desktop: > 1024px
 
----
-
-## 📝 Content-Updates
-
-### Texte aktualisieren
-
-1. Öffne die entsprechende HTML-Datei (z.B. `index.html`, `body-detox.html`)
-2. Finde den Text, den du ändern möchtest
-3. Bearbeite den Text direkt im HTML
-4. Speichere die Datei
-5. Lade die Seite im Browser neu (F5)
-
-**Beispiel:**
-```html
-<!-- In index.html -->
-<h1>Ganzkörper-Entgiftung in 30 Minuten</h1>
-<!-- Ändern zu: -->
-<h1>Ihr neuer Titel hier</h1>
-```
-
-### Bilder aktualisieren
-
-1. Speichere das neue Bild in `/assets/images/`
-2. Benenne es passend (z.B. `hero-waterfall.jpg`, `fussbad-vorher-nachher.jpg`)
-3. Aktualisiere den `src`-Pfad im HTML:
-   ```html
-   <img src="assets/images/dein-bild.jpg" alt="Beschreibung">
-   ```
-
-**Optimierung:**
-- Komprimiere Bilder vor dem Hochladen (z.B. mit [TinyPNG](https://tinypng.com/))
-- Zielgröße: < 200KB pro Bild
-- Format: WebP (mit JPG/PNG Fallback) oder optimiertes JPG
-
-### Neue Blog-Posts hinzufügen
-
-1. **Erstelle eine neue HTML-Datei:**
-   ```bash
-   # Kopiere ein bestehendes Post-Template
-   cp zweiter-blog.html neuer-post.html
-   ```
-
-2. **Bearbeite den neuen Post:**
-   - Titel ändern
-   - Datum aktualisieren
-   - Autor anpassen
-   - Content einfügen
-
-3. **Füge den Post zur Blog-Übersicht hinzu:**
-   - Öffne `blog.html`
-   - Füge eine neue Karte hinzu:
-   ```html
-   <article class="blog-card">
-     <img src="assets/images/blog/neuer-post.jpg" alt="Titel">
-     <h3>Neuer Post Titel</h3>
-     <p class="date">20. November 2025</p>
-     <p class="excerpt">Kurze Zusammenfassung...</p>
-     <a href="neuer-post.html" class="read-more">Weiterlesen</a>
-   </article>
-   ```
-
-4. **Bild hinzufügen:**
-   - Speichere das Featured Image in `/assets/images/blog/`
-
-### PDF-Flyer aktualisieren
-
-1. Speichere die neue PDF in `/assets/downloads/`
-2. Benenne sie passend (z.B. `flyer-cellulite.pdf`, `flyer-sport.pdf`, `flyer-entsaeuern.pdf`)
-3. Download-Links aktualisieren sich automatisch, wenn Dateinamen gleich bleiben
+Full design system documentation: [.claude/CLAUDE.md](.claude/CLAUDE.md)
 
 ---
 
-## 🚢 Deployment
+## 📚 Documentation
 
-### Netlify Deployment (empfohlen)
-
-1. **Netlify-Account erstellen:**
-   - Gehe zu [netlify.com](https://www.netlify.com/)
-   - Registriere dich (kostenlos)
-
-2. **Git-Repository verbinden:**
-   ```bash
-   # Git initialisieren (falls noch nicht geschehen)
-   git init
-   git add .
-   git commit -m "Initial commit"
-
-   # GitHub/GitLab Repository erstellen und pushen
-   git remote add origin <your-repo-url>
-   git push -u origin main
-   ```
-
-3. **Site auf Netlify deployen:**
-   - In Netlify: "New site from Git" klicken
-   - Repository auswählen
-   - Build Settings:
-     - Build command: (leer lassen)
-     - Publish directory: `/` (root)
-   - Deploy klicken
-
-4. **Custom Domain konfigurieren:**
-   - In Netlify: Domain settings → Add custom domain
-   - `www.koerperrein.ch` hinzufügen
-   - DNS-Einstellungen beim Domain-Provider anpassen:
-     ```
-     CNAME www -> <your-site>.netlify.app
-     ```
-
-5. **Formular konfigurieren:**
-   - Netlify Forms aktiviert sich automatisch
-   - In Netlify Dashboard: Forms → Notifications
-   - Email-Benachrichtigungen an `tamara.benz@koerperrein.com` und `sandra.marin@koerperrein.com`
-
-### Alternative: Vercel
-
-1. Installiere Vercel CLI: `npm i -g vercel`
-2. Deploye: `vercel`
-3. Folge den Anweisungen
+- **[Product Requirements Document](docs/KoerperRein-PRD.md)** - Project goals and specifications
+- **[Task Breakdown](docs/KoerperRein-Tasks.md)** - Implementation checklist
+- **[Design System](.claude/CLAUDE.md)** - Complete design tokens and guidelines
 
 ---
 
-## ✅ Testing
+## 🤝 Contact
 
-### Manuelles Testing
+**Developer:** Gianluca Marin
+**GitHub:** [@GianlucaMarin](https://github.com/GianlucaMarin)
 
-**Browser-Kompatibilität:**
-- Chrome (Desktop & Mobile)
-- Firefox (Desktop & Mobile)
-- Safari (macOS & iOS)
-- Edge (Desktop)
-
-**Responsive Design:**
-- Mobile: 375px, 390px, 414px
-- Tablet: 768px, 1024px
-- Desktop: 1440px, 1920px
-
-**Funktionalitäts-Checkliste:**
-- [ ] Alle Links funktionieren (keine 404-Fehler)
-- [ ] Navigation auf allen Seiten
-- [ ] Mobile-Menü öffnet/schließt
-- [ ] Kontaktformular validiert Eingaben
-- [ ] Kontaktformular sendet Emails
-- [ ] PDF-Downloads funktionieren
-- [ ] Social Media Links öffnen in neuem Tab
-- [ ] Bilder laden korrekt
-
-### Performance-Tests
-
-- **Google PageSpeed Insights:** [pagespeed.web.dev](https://pagespeed.web.dev/)
-- **Lighthouse:** DevTools → Lighthouse → Generate Report
-- **WebPageTest:** [webpagetest.org](https://www.webpagetest.org/)
-
-**Zielwerte:**
-- Performance: > 90
-- Accessibility: > 95
-- Best Practices: > 90
-- SEO: > 90
-- Ladezeit: < 2 Sekunden
+**Client:** KörperRein
+**Website:** [www.koerperrein.ch](https://www.koerperrein.ch)
 
 ---
 
-## 🔧 Wartung
+## 📄 License
 
-### Regelmäßige Updates
+© 2025 KörperRein. All rights reserved.
 
-- **Inhalt:** Blog-Posts mindestens 1x pro Monat
-- **Bilder:** Bei neuen Behandlungen/Angeboten
-- **SEO:** Meta-Descriptions aktualisieren bei Content-Änderungen
-
-### Backup
-
-- Git-Repository dient als Backup
-- Netlify speichert automatisch alle Deployments
-- Empfehlung: Regelmäßige lokale Backups des `/assets/` Ordners
+This project was built as client work for KörperRein. Code structure and implementation approach can be referenced for learning purposes.
 
 ---
 
-## 📞 Kontakt & Support
-
-**Website-Betreiber:**
-- Tamara Benz: [tamara.benz@koerperrein.com](mailto:tamara.benz@koerperrein.com)
-- Sandra Marin: [sandra.marin@koerperrein.com](mailto:sandra.marin@koerperrein.com)
-
-**Technische Fragen:**
-- Siehe Dokumentation in `/docs/`
-- [PRD](docs/KoerperRein-PRD.md) für Requirements
-- [Tasks](docs/KoerperRein-Tasks.md) für Implementierungs-Details
-
----
-
-## 📄 Lizenz & Credits
-
-**Copyright:** © 2025 KörperRein.ch - Alle Rechte vorbehalten
-
-**Design & Entwicklung:**
-- Konzept: Basierend auf Wix-Website
-- Design System: Dokumentiert in `.claude/CLAUDE.md`
-- Entwickelt mit Claude Code
-
-**Externe Ressourcen:**
-- Google Fonts (Montserrat, Open Sans)
-- Icons: Custom SVG
-
----
-
-## 🗺 Roadmap
-
-### Phase 1 (Aktuell)
-- [x] Projektstruktur
-- [ ] Design System (CSS)
-- [ ] Homepage
-- [ ] Alle Seiten (Body Detox, Über Uns, Blog, Kontakt, FAQ, AGB)
-- [ ] Kontaktformular
-- [ ] Deployment
-
-### Phase 2 (Zukünftig)
-- [ ] Online-Buchungskalender (Calendly-Integration)
-- [ ] Kunden-Testimonials
-- [ ] Newsletter-Anmeldung
-- [ ] Preisliste
-- [ ] Mehrsprachigkeit (FR, IT, EN)
-
----
-
-## 📚 Weitere Dokumentation
-
-- **Design System:** [.claude/CLAUDE.md](.claude/CLAUDE.md)
-- **PRD:** [docs/KoerperRein-PRD.md](docs/KoerperRein-PRD.md)
-- **Tasks:** [docs/KoerperRein-Tasks.md](docs/KoerperRein-Tasks.md)
-- **Cursor Rules:** [cursor-rules/](cursor-rules/)
-
----
-
-**Letzte Aktualisierung:** 2025-11-19
-**Version:** 1.0.0
-**Status:** In Entwicklung (Phase 1)
+**Built with** HTML5 • CSS3 • Vanilla JavaScript • Claude Code

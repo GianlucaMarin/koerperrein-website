@@ -1,0 +1,30 @@
+{
+  "posts": [
+    {
+      "id": "sandra-detoxing-you",
+      "title": "Sandra Detoxing You",
+      "author": "Sandra Marin",
+      "date": "2025-11-10",
+      "readTime": 5,
+      "excerpt": "Meine persönliche Entgiftungsreise und wie Body Detox mein Leben verändert hat. Erfahren Sie mehr über meine Erfahrungen.",
+      "image": "assets/images/blog-placeholder-2.jpg",
+      "slug": "sandra-detoxing-you.html",
+      "views": 0,
+      "likes": 0,
+      "comments": []
+    },
+    {
+      "id": "zweiter-blog",
+      "title": "Die Kraft der Entgiftung",
+      "author": "Sandra Marin",
+      "date": "2025-11-15",
+      "readTime": 4,
+      "excerpt": "In der heutigen Zeit ist unser Körper täglich einer Vielzahl von Umweltgiften, Schadstoffen und Stress ausgesetzt. Eine regelmäßige Entgiftung ist daher wichtiger denn je.",
+      "image": "assets/images/blog-placeholder-1.jpg",
+      "slug": "zweiter-blog.html",
+      "views": 0,
+      "likes": 0,
+      "comments": []
+    }
+  ]
+}

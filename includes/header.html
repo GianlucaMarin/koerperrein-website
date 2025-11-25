@@ -1,0 +1,51 @@
+<!--
+  KörperRein Website - Global Navigation Header
+  Sticky navigation with logo, menu, CTA button, and mobile overlay
+-->
+
+<header class="navbar" id="navbar" data-component="header">
+  <div class="navbar-top-bar">GANZKÖRPER-ENTGIFTUNG</div>
+  <div class="navbar-container">
+    <!-- Logo / Brand -->
+    <a href="index.html" class="navbar-brand" aria-label="KörperRein Startseite">
+      <span class="brand-frame">KÖRPERREIN</span>
+    </a>
+
+    <!-- Desktop & Mobile Navigation -->
+    <nav class="navbar-nav" id="navbarMenu" aria-label="Hauptnavigation">
+      <button class="navbar-close" type="button" aria-label="Menü schließen">
+        &times;
+      </button>
+
+      <ul class="navbar-links list-none">
+        <li><a href="index.html" class="nav-link" data-page="start">START</a></li>
+        <li><a href="body-detox.html" class="nav-link" data-page="body-detox">BODY DETOX</a></li>
+        <li><a href="ueber-uns.html" class="nav-link" data-page="ueber-uns">ÜBER UNS</a></li>
+        <li><a href="blog.html" class="nav-link" data-page="blog">BLOG</a></li>
+        <li><a href="kontakt.html" class="nav-link" data-page="kontakt">KONTAKT</a></li>
+      </ul>
+
+      <div class="navbar-cta">
+        <a href="kontakt.html#booking" class="btn btn-primary btn-sm">
+          Buchungsanfrage
+        </a>
+      </div>
+    </nav>
+
+    <!-- Mobile Menu Toggle Button -->
+    <button
+      class="navbar-toggle"
+      id="navbarToggle"
+      aria-label="Menü öffnen"
+      aria-expanded="false"
+      aria-controls="navbarMenu"
+      aria-haspopup="true"
+    >
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+  </div>
+
+  <div class="navbar-overlay" id="navbarOverlay" hidden></div>
+</header>

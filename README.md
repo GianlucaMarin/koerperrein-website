@@ -164,12 +164,6 @@ python3 -m http.server 8000
 
 ---
 
-## 📸 Screenshots
-
-*Coming soon - Homepage, Body Detox page, Contact form*
-
----
-
 ## 🎨 Design System Highlights
 
 **Color Palette**

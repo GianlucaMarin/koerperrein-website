@@ -4258,3 +4258,205 @@ body-detox.html .hero-split,
     padding: var(--spacing-xl);
   }
 }
+/* ================================
+   MOBILE FIXES (MAX-WIDTH 768PX)
+   Comprehensive mobile adjustments
+   ================================ */
+
+@media (max-width: 768px) {
+  /* Fix Navigation Menu Stripes */
+  .navbar-nav-item {
+    border-bottom: none !important;
+    padding: var(--spacing-md) 0;
+  }
+
+  .navbar-nav-link {
+    display: block;
+    width: 100%;
+    padding: var(--spacing-sm) 0;
+    border-bottom: none !important;
+  }
+
+  .nav-link {
+    border-bottom: none !important;
+    padding: var(--spacing-md) 0;
+  }
+
+  .nav-link:hover,
+  .nav-link:focus-visible,
+  .nav-link.active {
+    border-bottom: none !important;
+  }
+
+  /* Fix Hero Sections on Mobile */
+  .hero-split .container {
+    grid-template-columns: 1fr !important;
+    gap: var(--spacing-lg);
+  }
+
+  .hero-split .hero-copy,
+  .hero-split .hero-visual {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  /* Fix Body Detox Hero */
+  .body-detox-hero .hero-copy h1 {
+    font-size: var(--font-size-2xl) !important;
+    line-height: 1.2;
+    word-wrap: break-word;
+  }
+
+  .body-detox-hero .hero-tagline {
+    font-size: var(--font-size-sm);
+  }
+
+  .body-detox-hero .hero-visual img {
+    max-height: 300px;
+    object-fit: cover;
+  }
+
+  /* Fix Buttons Overflow */
+  .hero-cta {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    width: 100%;
+  }
+
+  .hero-cta .btn {
+    width: 100% !important;
+    min-width: unset !important;
+    max-width: 100%;
+    margin: 0;
+  }
+
+  /* Fix CTA Section Buttons */
+  .cta-actions {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: var(--spacing-md);
+    width: 100%;
+  }
+
+  .cta-actions .btn {
+    width: 100% !important;
+    max-width: 100%;
+  }
+
+  .cta-card {
+    padding: var(--spacing-xl);
+  }
+
+  /* Fix Comment Form */
+  .comment-form {
+    padding: var(--spacing-lg);
+  }
+
+  .comment-form .form-actions {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .comment-form .btn {
+    width: 100% !important;
+    max-width: 100%;
+  }
+
+  .comment-form-footer {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: var(--spacing-md);
+    margin-top: var(--spacing-md);
+  }
+
+  .comment-form-footer .btn {
+    width: 100% !important;
+    max-width: 100%;
+    white-space: normal;
+    text-align: center;
+    justify-content: center;
+    display: flex;
+    align-items: center;
+  }
+
+  .comment-form-info {
+    text-align: center;
+  }
+
+  /* Fix Grid Layouts */
+  .grid-2, .grid-3 {
+    grid-template-columns: 1fr !important;
+  }
+
+  /* Fix Story Section */
+  .story-content-grid {
+    grid-template-columns: 1fr !important;
+  }
+
+  /* Fix Container Padding */
+  .container {
+    padding-left: var(--spacing-md);
+    padding-right: var(--spacing-md);
+  }
+
+  /* Fix Section Padding */
+  .section {
+    padding: var(--spacing-2xl) 0;
+  }
+
+  /* Fix Typography */
+  h1 {
+    font-size: var(--font-size-3xl);
+  }
+
+  h2 {
+    font-size: var(--font-size-xl);
+  }
+
+  /* Fix Bio Sections */
+  .bio-grid {
+    grid-template-columns: 1fr !important;
+  }
+
+  /* Fix Contact Grid */
+  .contact-grid {
+    grid-template-columns: 1fr !important;
+  }
+
+  .contact-info-card {
+    padding: var(--spacing-md);
+  }
+
+  .contact-info-card .contact-link {
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    max-width: 100%;
+    font-size: var(--font-size-sm);
+  }
+
+  /* Fix Form Buttons */
+  .form-actions .btn,
+  .btn-block {
+    width: 100% !important;
+    max-width: 100%;
+  }
+
+  /* Fix Images */
+  img {
+    max-width: 100%;
+    height: auto;
+  }
+
+  /* Fix Overflow */
+  body {
+    overflow-x: hidden;
+  }
+
+  * {
+    max-width: 100%;
+  }
+}

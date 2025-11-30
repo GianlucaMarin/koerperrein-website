@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Minimal Contact Form Test</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      max-width: 600px;
+      margin: 50px auto;
+      padding: 20px;
+    }
+    .form-group {
+      margin-bottom: 15px;
+    }
+    label {
+      display: block;
+      margin-bottom: 5px;
+      font-weight: bold;
+    }
+    input, textarea {
+      width: 100%;
+      padding: 8px;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+    }
+    button {
+      background: #007bff;
+      color: white;
+      border: none;
+      padding: 12px 24px;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 16px;
+    }
+    button:hover {
+      background: #0056b3;
+    }
+    .message {
+      padding: 15px;
+      margin-top: 20px;
+      border-radius: 4px;
+      display: none;
+    }
+    .success {
+      background: #d4edda;
+      color: #155724;
+      border: 1px solid #c3e6cb;
+    }
+    .error {
+      background: #f8d7da;
+      color: #721c24;
+      border: 1px solid #f5c6cb;
+    }
+    .log {
+      background: #f8f9fa;
+      border: 1px solid #ddd;
+      padding: 10px;
+      margin-top: 20px;
+      font-family: monospace;
+      font-size: 12px;
+      max-height: 300px;
+      overflow-y: auto;
+    }
+  </style>
+</head>
+<body>
+  <h1>Minimal EmailJS Test</h1>
+  <p><strong>Test Setup:</strong> Nur EmailJS, keine anderen Scripts.</p>
+
+  <div class="form-group">
+    <label>Empfänger:</label>
+    <button type="button" id="btnSandra" onclick="selectRecipient('sandra')">Sandra</button>
+  </div>
+
+  <div class="form-group">
+    <label for="name">Name *</label>
+    <input type="text" id="name" required>
+  </div>
+
+  <div class="form-group">
+    <label for="email">E-Mail *</label>
+    <input type="email" id="email" required>
+  </div>
+
+  <div class="form-group">
+    <label for="telefon">Telefon</label>
+    <input type="tel" id="telefon">
+  </div>
+
+  <div class="form-group">
+    <label for="nachricht">Nachricht *</label>
+    <textarea id="nachricht" rows="4" required></textarea>
+  </div>
+
+  <button type="button" onclick="sendEmail()">Nachricht senden</button>
+
+  <div id="successMessage" class="message success"></div>
+  <div id="errorMessage" class="message error"></div>
+
+  <div class="log" id="consoleLog"></div>
+
+  <!-- EmailJS Library -->
+  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+
+  <script>
+    let recipient = 'sandra';
+    const logDiv = document.getElementById('consoleLog');
+
+    function log(message) {
+      const time = new Date().toLocaleTimeString();
+      const logEntry = document.createElement('div');
+      logEntry.textContent = `[${time}] ${message}`;
+      logDiv.appendChild(logEntry);
+      logDiv.scrollTop = logDiv.scrollHeight;
+      console.log(message);
+    }
+
+    // Initialize EmailJS
+    (function() {
+      try {
+        emailjs.init("cfYT-8aK2jhcc39C3");
+        log('✓ EmailJS initialized');
+      } catch (error) {
+        log('✗ EmailJS init failed: ' + error.message);
+      }
+    })();
+
+    function selectRecipient(rec) {
+      recipient = rec;
+      log('Selected recipient: ' + rec);
+      document.getElementById('btnSandra').style.background = rec === 'sandra' ? '#28a745' : '#6c757d';
+    }
+
+    async function sendEmail() {
+      log('--- SEND EMAIL CLICKED ---');
+
+      const name = document.getElementById('name').value.trim();
+      const email = document.getElementById('email').value.trim();
+      const telefon = document.getElementById('telefon').value.trim();
+      const nachricht = document.getElementById('nachricht').value.trim();
+
+      // Basic validation
+      if (!name || !email || !nachricht) {
+        log('✗ Validation failed - missing fields');
+        showError('Bitte alle Pflichtfelder ausfüllen!');
+        return;
+      }
+
+      if (!email.includes('@')) {
+        log('✗ Validation failed - invalid email');
+        showError('Bitte gültige E-Mail eingeben!');
+        return;
+      }
+
+      log('✓ Validation passed');
+
+      // Check EmailJS
+      if (typeof emailjs === 'undefined') {
+        log('✗ EmailJS not loaded');
+        showError('EmailJS ist nicht geladen!');
+        return;
+      }
+
+      log('✓ EmailJS is available');
+
+      const serviceID = 'service_0qovg6g';
+      const templateID = 'template_tq6lvwg';
+
+      const templateParams = {
+        from_name: name,
+        from_email: email,
+        telefon: telefon || 'Nicht angegeben',
+        message: nachricht,
+        recipient: recipient,
+        to_email: recipient === 'sandra' ? 'sandra.marin@koerperrein.ch' : 'tamara.benz@koerperrein.com'
+      };
+
+      log('Template Params: ' + JSON.stringify(templateParams, null, 2));
+
+      try {
+        log('Sending email via EmailJS...');
+        const response = await emailjs.send(serviceID, templateID, templateParams);
+
+        log('✓ EMAIL SENT SUCCESSFULLY!');
+        log('Response status: ' + response.status);
+        log('Response text: ' + response.text);
+
+        showSuccess('E-Mail erfolgreich gesendet!');
+
+        // Clear form
+        document.getElementById('name').value = '';
+        document.getElementById('email').value = '';
+        document.getElementById('telefon').value = '';
+        document.getElementById('nachricht').value = '';
+
+      } catch (error) {
+        log('✗ EMAIL SENDING FAILED!');
+        log('Error: ' + error.message);
+        log('Error details: ' + JSON.stringify(error, null, 2));
+        showError('Fehler beim Senden: ' + error.message);
+      }
+    }
+
+    function showSuccess(message) {
+      const successMsg = document.getElementById('successMessage');
+      const errorMsg = document.getElementById('errorMessage');
+      successMsg.textContent = message;
+      successMsg.style.display = 'block';
+      errorMsg.style.display = 'none';
+    }
+
+    function showError(message) {
+      const successMsg = document.getElementById('successMessage');
+      const errorMsg = document.getElementById('errorMessage');
+      errorMsg.textContent = message;
+      errorMsg.style.display = 'block';
+      successMsg.style.display = 'none';
+    }
+
+    // Log page load
+    window.addEventListener('load', function() {
+      log('Page loaded');
+      selectRecipient('sandra');
+    });
+  </script>
+</body>
+</html>

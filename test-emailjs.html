@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>EmailJS Test</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      max-width: 800px;
+      margin: 50px auto;
+      padding: 20px;
+      background: #f5f5f5;
+    }
+    .test-section {
+      background: white;
+      padding: 20px;
+      margin: 20px 0;
+      border-radius: 8px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+    h1 { color: #333; }
+    h2 { color: #666; margin-top: 0; }
+    button {
+      background: #007bff;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 4px;
+      cursor: pointer;
+      margin: 5px;
+    }
+    button:hover { background: #0056b3; }
+    .log {
+      background: #f8f9fa;
+      border-left: 4px solid #007bff;
+      padding: 10px;
+      margin: 10px 0;
+      font-family: monospace;
+      white-space: pre-wrap;
+    }
+    .error { border-left-color: #dc3545; }
+    .success { border-left-color: #28a745; }
+    input, textarea {
+      width: 100%;
+      padding: 8px;
+      margin: 5px 0;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+    }
+  </style>
+</head>
+<body>
+  <h1>EmailJS Diagnose & Test</h1>
+
+  <!-- Test 1: EmailJS Library -->
+  <div class="test-section">
+    <h2>Test 1: EmailJS Library geladen?</h2>
+    <button onclick="checkEmailJS()">Prüfen</button>
+    <div id="test1-result"></div>
+  </div>
+
+  <!-- Test 2: EmailJS Initialisierung -->
+  <div class="test-section">
+    <h2>Test 2: EmailJS initialisieren</h2>
+    <button onclick="initEmailJS()">Initialisieren</button>
+    <div id="test2-result"></div>
+  </div>
+
+  <!-- Test 3: Service & Template prüfen -->
+  <div class="test-section">
+    <h2>Test 3: Service & Template Konfiguration</h2>
+    <p><strong>Public Key:</strong> cfYT-8aK2jhcc39C3</p>
+    <p><strong>Service ID:</strong> service_0qovg6g</p>
+    <p><strong>Template ID:</strong> template_tq6lvwg</p>
+    <button onclick="checkConfig()">Konfiguration OK</button>
+    <div id="test3-result"></div>
+  </div>
+
+  <!-- Test 4: Test-Email senden -->
+  <div class="test-section">
+    <h2>Test 4: Test-Email senden</h2>
+    <input type="text" id="testName" placeholder="Dein Name" value="Test User">
+    <input type="email" id="testEmail" placeholder="Deine E-Mail" value="test@example.com">
+    <textarea id="testMessage" placeholder="Nachricht" rows="3">Dies ist eine Test-Nachricht von der EmailJS Diagnose-Seite.</textarea>
+    <br>
+    <button onclick="sendTestEmail()">Test-Email senden</button>
+    <div id="test4-result"></div>
+  </div>
+
+  <!-- Console Log -->
+  <div class="test-section">
+    <h2>Console Log</h2>
+    <div id="console-log"></div>
+  </div>
+
+  <!-- EmailJS Library -->
+  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+
+  <script>
+    let consoleLog = document.getElementById('console-log');
+
+    function log(message, type = 'info') {
+      const logDiv = document.createElement('div');
+      logDiv.className = 'log ' + (type === 'error' ? 'error' : type === 'success' ? 'success' : '');
+      logDiv.textContent = new Date().toLocaleTimeString() + ' - ' + message;
+      consoleLog.appendChild(logDiv);
+      console.log(message);
+    }
+
+    // Test 1: Check if EmailJS is loaded
+    function checkEmailJS() {
+      const result = document.getElementById('test1-result');
+      if (typeof emailjs !== 'undefined') {
+        result.innerHTML = '<div class="log success">✓ EmailJS Library ist geladen!</div>';
+        log('EmailJS Library gefunden', 'success');
+      } else {
+        result.innerHTML = '<div class="log error">✗ EmailJS Library ist NICHT geladen!</div>';
+        log('EmailJS Library NICHT gefunden', 'error');
+      }
+    }
+
+    // Test 2: Initialize EmailJS
+    function initEmailJS() {
+      const result = document.getElementById('test2-result');
+      try {
+        emailjs.init("cfYT-8aK2jhcc39C3");
+        result.innerHTML = '<div class="log success">✓ EmailJS erfolgreich initialisiert!</div>';
+        log('EmailJS initialisiert mit Public Key: cfYT-8aK2jhcc39C3', 'success');
+      } catch (error) {
+        result.innerHTML = '<div class="log error">✗ Fehler beim Initialisieren: ' + error.message + '</div>';
+        log('EmailJS Initialisierung fehlgeschlagen: ' + error.message, 'error');
+      }
+    }
+
+    // Test 3: Check configuration
+    function checkConfig() {
+      const result = document.getElementById('test3-result');
+      const config = {
+        publicKey: 'cfYT-8aK2jhcc39C3',
+        serviceID: 'service_0qovg6g',
+        templateID: 'template_tq6lvwg'
+      };
+
+      result.innerHTML = '<div class="log success">✓ Konfiguration sieht korrekt aus.</div>' +
+                        '<div class="log">Bitte prüfe in deinem EmailJS Dashboard:</div>' +
+                        '<div class="log">1. Service "' + config.serviceID + '" existiert</div>' +
+                        '<div class="log">2. Template "' + config.templateID + '" existiert</div>' +
+                        '<div class="log">3. Template hat folgende Variablen:</div>' +
+                        '<div class="log">   - {{from_name}}</div>' +
+                        '<div class="log">   - {{from_email}}</div>' +
+                        '<div class="log">   - {{telefon}}</div>' +
+                        '<div class="log">   - {{message}}</div>' +
+                        '<div class="log">   - {{recipient}}</div>' +
+                        '<div class="log">   - {{to_email}}</div>';
+
+      log('Konfiguration geprüft', 'success');
+    }
+
+    // Test 4: Send test email
+    async function sendTestEmail() {
+      const result = document.getElementById('test4-result');
+      const name = document.getElementById('testName').value;
+      const email = document.getElementById('testEmail').value;
+      const message = document.getElementById('testMessage').value;
+
+      if (!name || !email || !message) {
+        result.innerHTML = '<div class="log error">✗ Bitte alle Felder ausfüllen!</div>';
+        return;
+      }
+
+      result.innerHTML = '<div class="log">Sende Email...</div>';
+      log('Starte Email-Versand...');
+
+      try {
+        // Initialize first
+        emailjs.init("cfYT-8aK2jhcc39C3");
+        log('EmailJS initialisiert');
+
+        const templateParams = {
+          from_name: name,
+          from_email: email,
+          telefon: 'Test-Telefon',
+          message: message,
+          recipient: 'sandra',
+          to_email: 'sandra.marin@koerperrein.ch'
+        };
+
+        log('Template Parameters: ' + JSON.stringify(templateParams, null, 2));
+
+        const response = await emailjs.send(
+          'service_0qovg6g',
+          'template_tq6lvwg',
+          templateParams
+        );
+
+        result.innerHTML = '<div class="log success">✓ Email erfolgreich gesendet!</div>' +
+                          '<div class="log">Status: ' + response.status + '</div>' +
+                          '<div class="log">Text: ' + response.text + '</div>';
+
+        log('Email erfolgreich gesendet! Status: ' + response.status, 'success');
+
+      } catch (error) {
+        result.innerHTML = '<div class="log error">✗ Fehler beim Senden:</div>' +
+                          '<div class="log error">' + error.message + '</div>' +
+                          '<div class="log error">' + JSON.stringify(error, null, 2) + '</div>';
+
+        log('Email-Versand fehlgeschlagen: ' + error.message, 'error');
+
+        // Detaillierte Fehleranalyse
+        if (error.message && error.message.includes('template')) {
+          result.innerHTML += '<div class="log error">→ Problem mit Template! Prüfe Template ID und Variablennamen.</div>';
+        } else if (error.message && error.message.includes('service')) {
+          result.innerHTML += '<div class="log error">→ Problem mit Service! Prüfe Service ID.</div>';
+        } else if (error.message && error.message.includes('public')) {
+          result.innerHTML += '<div class="log error">→ Problem mit Public Key! Prüfe API Key.</div>';
+        }
+      }
+    }
+
+    // Auto-run Test 1 and 2 on load
+    window.addEventListener('load', function() {
+      log('Seite geladen, starte automatische Tests...');
+      setTimeout(() => {
+        checkEmailJS();
+        setTimeout(() => {
+          initEmailJS();
+        }, 500);
+      }, 500);
+    });
+  </script>
+</body>
+</html>

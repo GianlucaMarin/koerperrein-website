@@ -3,11 +3,16 @@
  * Handles client-side validation and form submission
  */
 
-(function() {
+document.addEventListener('DOMContentLoaded', function() {
   'use strict';
 
   const form = document.getElementById('contactForm');
-  if (!form) return;
+  if (!form) {
+    console.error('contactForm not found - script aborted');
+    return;
+  }
+
+  console.log('✅ contactForm found, continuing script initialization...');
 
   // Recipient Selection Functionality
   const recipientButtons = document.querySelectorAll('.btn-recipient');
@@ -146,7 +151,19 @@
   function showSuccess() {
     successMessage.style.display = 'block';
     errorMessage.style.display = 'none';
-    form.reset();
+
+    // Manually reset all fields (since we're using a div, not a form)
+    nameInput.value = '';
+    emailInput.value = '';
+    telefonInput.value = '';
+    nachrichtInput.value = '';
+    datenschutzInput.checked = false;
+
+    // Clear any error states
+    clearError(nameInput, nameError);
+    clearError(emailInput, emailError);
+    clearError(nachrichtInput, nachrichtError);
+    clearError(datenschutzInput, datenschutzError);
 
     // Scroll to success message
     successMessage.scrollIntoView({ behavior: 'smooth', block: 'center' });
@@ -171,8 +188,8 @@
   /**
    * Handle Form Submission
    */
-  async function handleSubmit(e) {
-    e.preventDefault();
+  async function handleSubmit() {
+    console.log('handleSubmit called');
 
     // Hide previous messages
     successMessage.style.display = 'none';
@@ -180,33 +197,55 @@
 
     // Validate form
     if (!validateForm()) {
+      console.log('Form validation failed');
       return;
     }
 
-    // Get form data
-    const formData = new FormData(form);
+    console.log('Form validation passed');
+
+    // Check if EmailJS is available
+    if (typeof emailjs === 'undefined') {
+      console.error('EmailJS is not loaded!');
+      alert('EmailJS ist nicht geladen. Bitte laden Sie die Seite neu.');
+      return;
+    }
+
+    console.log('EmailJS is available');
 
     // Disable submit button
-    const submitButton = form.querySelector('button[type="submit"]');
+    const submitButton = document.getElementById('submitBtn');
     const originalButtonText = submitButton.textContent;
     submitButton.textContent = 'Wird gesendet...';
     submitButton.disabled = true;
 
     try {
-      // Submit form using Fetch API (Netlify Forms)
-      const response = await fetch('/', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-        body: new URLSearchParams(formData).toString()
-      });
+      // Get recipient (Sandra or Tamara)
+      const recipient = recipientField.value;
 
-      if (response.ok) {
-        showSuccess();
-      } else {
-        throw new Error('Form submission failed');
-      }
+      // For now, only Sandra is configured
+      const serviceID = 'service_0qovg6g'; // Sandra's service
+      const templateID = 'template_tq6lvwg';
+
+      // Prepare template parameters
+      const templateParams = {
+        from_name: nameInput.value,
+        from_email: emailInput.value,
+        telefon: telefonInput.value || 'Nicht angegeben',
+        message: nachrichtInput.value,
+        recipient: recipient,
+        to_email: recipient === 'sandra' ? 'sandra.marin@koerperrein.ch' : 'tamara.benz@koerperrein.com'
+      };
+
+      console.log('Sending email with params:', templateParams);
+
+      // Send email via EmailJS
+      const response = await emailjs.send(serviceID, templateID, templateParams);
+
+      console.log('Email sent successfully:', response);
+      showSuccess();
+
     } catch (error) {
-      console.error('Form submission error:', error);
+      console.error('Email sending error:', error);
       showFormError();
     } finally {
       // Re-enable submit button
@@ -221,7 +260,7 @@
   nachrichtInput.addEventListener('blur', validateNachricht);
   datenschutzInput.addEventListener('change', validateDatenschutz);
 
-  form.addEventListener('submit', handleSubmit);
+  // Note: No form submit listener needed since we're using a div with button onclick
 
   // Real-time validation as user types (optional enhancement)
   nameInput.addEventListener('input', () => {
@@ -241,4 +280,12 @@
       validateNachricht();
     }
   });
-})();
+
+  // Make handleSubmit globally accessible for inline onclick
+  console.log('✅ About to define window.contactFormHandler...');
+  window.contactFormHandler = function() {
+    console.log('Global contactFormHandler called from button click');
+    handleSubmit();
+  };
+  console.log('✅ window.contactFormHandler defined successfully!');
+});

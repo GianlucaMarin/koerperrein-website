@@ -67,11 +67,8 @@
               </div>
             </div>
 
-            <form class="contact-form" id="contactForm" name="contact" method="POST" data-netlify="true" data-netlify-honeypot="bot-field">
-              <!-- Honeypot field for spam protection -->
-              <input type="hidden" name="bot-field">
-              <input type="hidden" name="form-name" value="contact">
-              <input type="hidden" name="recipient" id="recipientField" value="tamara">
+            <div class="contact-form" id="contactForm">
+              <input type="hidden" id="recipientField" value="tamara">
 
               <!-- Name Field -->
               <div class="form-group">
@@ -150,7 +147,7 @@
               </div>
 
               <!-- Submit Button -->
-              <button type="submit" class="btn btn-primary btn-lg btn-block">
+              <button type="button" id="submitBtn" class="btn btn-primary btn-lg btn-block" onclick="if(window.contactFormHandler) window.contactFormHandler();">
                 Nachricht senden
               </button>
 
@@ -164,7 +161,7 @@
                 <p><strong>Es ist ein Fehler aufgetreten.</strong></p>
                 <p>Bitte versuchen Sie es später erneut oder kontaktieren Sie uns direkt per E-Mail.</p>
               </div>
-            </form>
+            </div>
           </div>
 
           <!-- Contact Information Sidebar -->
@@ -215,7 +212,17 @@
 
   <a href="kontakt.html" class="chat-pill" aria-label="Chat starten">💬</a>
 
-  <script src="js/navigation.js" defer></script>
-  <script src="js/contact-form.js" defer></script>
+  <!-- EmailJS Library - Load BEFORE other scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+  <script>
+    // Initialize EmailJS immediately
+    (function(){
+      emailjs.init("cfYT-8aK2jhcc39C3");
+      console.log('EmailJS initialized');
+    })();
+  </script>
+
+  <script src="js/navigation.js"></script>
+  <script src="js/contact-form.js"></script>
 </body>
 </html>

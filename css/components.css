@@ -2564,6 +2564,50 @@ a:focus-visible {
   color: #721c24;
 }
 
+/* Recipient Selection */
+.recipient-selection {
+  margin-bottom: var(--spacing-xl);
+  padding: var(--spacing-lg);
+  background-color: var(--color-bg-light);
+  border-radius: var(--radius-md);
+}
+
+.recipient-label {
+  font-family: var(--font-heading);
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-text-dark);
+  margin-bottom: var(--spacing-md);
+  text-align: center;
+}
+
+.recipient-buttons {
+  display: flex;
+  gap: var(--spacing-md);
+  justify-content: center;
+}
+
+.btn-recipient {
+  flex: 1;
+  max-width: 200px;
+  background-color: var(--color-white);
+  color: var(--color-text-dark);
+  border: 2px solid #B8AE9F;
+  transition: all var(--transition-base);
+}
+
+.btn-recipient:hover {
+  background-color: #F5F3F0;
+  border-color: #8B7355;
+  transform: translateY(-1px);
+}
+
+.btn-recipient.active {
+  background-color: #8B7355;
+  color: var(--color-white);
+  border-color: #8B7355;
+}
+
 /* Contact Info Cards */
 .contact-info-card {
   background-color: var(--color-bg-light);
@@ -4436,6 +4480,17 @@ body-detox.html .hero-split,
     overflow-wrap: break-word;
     max-width: 100%;
     font-size: var(--font-size-sm);
+  }
+
+  /* Fix Recipient Selection */
+  .recipient-buttons {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .btn-recipient {
+    max-width: 100%;
+    width: 100%;
   }
 
   /* Fix Form Buttons */

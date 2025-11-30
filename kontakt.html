@@ -54,10 +54,24 @@
           <div class="contact-form-wrapper">
             <h2 class="section-title">Senden Sie uns eine Nachricht</h2>
 
+            <!-- Recipient Selection -->
+            <div class="recipient-selection">
+              <p class="recipient-label">Nachricht senden an:</p>
+              <div class="recipient-buttons">
+                <button type="button" class="btn btn-recipient active" data-recipient="tamara" data-email="tamara.benz@koerperrein.com">
+                  Tamara Benz
+                </button>
+                <button type="button" class="btn btn-recipient" data-recipient="sandra" data-email="sandra.marin@koerperrein.ch">
+                  Sandra Marin
+                </button>
+              </div>
+            </div>
+
             <form class="contact-form" id="contactForm" name="contact" method="POST" data-netlify="true" data-netlify-honeypot="bot-field">
               <!-- Honeypot field for spam protection -->
               <input type="hidden" name="bot-field">
               <input type="hidden" name="form-name" value="contact">
+              <input type="hidden" name="recipient" id="recipientField" value="tamara">
 
               <!-- Name Field -->
               <div class="form-group">
@@ -167,7 +181,7 @@
             <div class="contact-info-card">
               <h3 class="contact-info-title">Sandra Marin</h3>
               <a href="tel:+41792367040" class="contact-link">+41 79 236 70 40</a>
-              <a href="mailto:sandra.marin@koerperrein.com" class="contact-link">sandra.marin@koerperrein.com</a>
+              <a href="mailto:sandra.marin@koerperrein.ch" class="contact-link">sandra.marin@koerperrein.ch</a>
               <p class="contact-info-text">Behandlungen in Richterswil (montags) und Wädenswil</p>
             </div>
 

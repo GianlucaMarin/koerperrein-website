@@ -9,6 +9,26 @@
   const form = document.getElementById('contactForm');
   if (!form) return;
 
+  // Recipient Selection Functionality
+  const recipientButtons = document.querySelectorAll('.btn-recipient');
+  const recipientField = document.getElementById('recipientField');
+
+  recipientButtons.forEach(button => {
+    button.addEventListener('click', function() {
+      // Remove active class from all buttons
+      recipientButtons.forEach(btn => btn.classList.remove('active'));
+
+      // Add active class to clicked button
+      this.classList.add('active');
+
+      // Update hidden field with selected recipient
+      const recipient = this.dataset.recipient;
+      recipientField.value = recipient;
+
+      console.log('Selected recipient:', recipient, 'Email:', this.dataset.email);
+    });
+  });
+
   const nameInput = document.getElementById('name');
   const emailInput = document.getElementById('email');
   const telefonInput = document.getElementById('telefon');

@@ -14,7 +14,9 @@
    */
   async function loadBlogPosts() {
     try {
-      const response = await fetch('data/blog-posts.json');
+      // Add cache busting to force fresh JSON load
+      const timestamp = new Date().getTime();
+      const response = await fetch(`data/blog-posts.json?v=${timestamp}`);
       const data = await response.json();
       blogPosts = data.posts;
 

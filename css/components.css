@@ -1167,9 +1167,11 @@
 
 .bio-image {
   width: 100%;
+  max-width: 400px; /* Limit photo size */
   overflow: hidden;
   border-radius: var(--radius-xl);
   box-shadow: var(--shadow-lg);
+  margin: 0 auto; /* Center the image */
 }
 
 .bio-image img {
@@ -2130,7 +2132,9 @@ a:focus-visible {
 
 .blog-post-image {
   width: 100%;
+  max-height: 450px;
   height: auto;
+  object-fit: cover;
   border-radius: var(--radius-lg);
   margin-bottom: var(--spacing-2xl);
   box-shadow: var(--shadow-md);

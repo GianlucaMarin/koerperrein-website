@@ -222,21 +222,31 @@ document.addEventListener('DOMContentLoaded', function() {
       // Get recipient (Sandra or Tamara)
       const recipient = recipientField.value;
 
-      // For now, only Sandra is configured
-      const serviceID = 'service_0qovg6g'; // Sandra's service
-      const templateID = 'template_tq6lvwg';
+      // Determine which service and template to use based on recipient
+      let serviceID, templateID;
 
-      // Prepare template parameters
+      if (recipient === 'sandra') {
+        serviceID = 'service_aschfsb';  // Sandra's service
+        templateID = 'template_m4z3d2x'; // Sandra's template (fixed: z not 2)
+      } else if (recipient === 'tamara') {
+        serviceID = 'service_zjumkyh';  // Tamara's service
+        templateID = 'template_faqzqcp'; // Tamara's template
+      } else {
+        console.error('Invalid recipient selected');
+        showFormError();
+        return;
+      }
+
+      // Prepare template parameters (must match EmailJS template variables)
       const templateParams = {
-        from_name: nameInput.value,
-        from_email: emailInput.value,
+        name: nameInput.value,
+        email: emailInput.value,
         telefon: telefonInput.value || 'Nicht angegeben',
-        message: nachrichtInput.value,
-        recipient: recipient,
-        to_email: recipient === 'sandra' ? 'sandra.marin@koerperrein.ch' : 'tamara.benz@koerperrein.com'
+        nachricht: nachrichtInput.value
       };
 
       console.log('Sending email with params:', templateParams);
+      console.log('Using service:', serviceID, 'and template:', templateID);
 
       // Send email via EmailJS
       const response = await emailjs.send(serviceID, templateID, templateParams);

@@ -845,7 +845,7 @@
   width: 100%;
   max-width: 280px;
   height: auto;
-  margin-left: 4rem;
+  margin-left: 6rem;
   object-fit: contain;
   border-radius: var(--radius-md);
   box-shadow: var(--shadow-md);

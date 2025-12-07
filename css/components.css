@@ -753,6 +753,12 @@
   gap: var(--spacing-xl);
 }
 
+.grid-2-wider-right {
+  display: grid;
+  grid-template-columns: 4fr 6fr;
+  gap: var(--spacing-xl);
+}
+
 .grid-3 {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -761,6 +767,7 @@
 
 @media (max-width: 768px) {
   .grid-2,
+  .grid-2-wider-right,
   .grid-3 {
     grid-template-columns: 1fr;
     gap: var(--spacing-lg);

@@ -1137,6 +1137,10 @@
   background-color: #e5dfd3;
 }
 
+.bio-section--light {
+  background-color: var(--color-bg-light);
+}
+
 .bio-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));

@@ -841,7 +841,7 @@
 
 .image-stack img {
   width: 100%;
-  max-width: none;
+  max-width: 600px;
   height: auto;
   object-fit: contain;
   border-radius: var(--radius-md);

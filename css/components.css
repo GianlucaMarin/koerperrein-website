@@ -2064,6 +2064,11 @@ a:focus-visible {
     padding: 0 var(--spacing-md);
   }
 
+  .body-detox-section .body-detox-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: var(--spacing-md);
+  }
+
   .body-detox-layout-2col {
     grid-template-columns: 1fr;
     gap: var(--spacing-xl);

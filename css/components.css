@@ -840,6 +840,8 @@
 }
 
 .image-stack img {
+  width: 120%;
+  max-width: 120%;
   border-radius: var(--radius-md);
   box-shadow: var(--shadow-md);
 }

@@ -840,7 +840,8 @@
 }
 
 .image-stack img {
-  width: 85%;
+  width: 100%;
+  max-width: none;
   height: auto;
   object-fit: contain;
   border-radius: var(--radius-md);

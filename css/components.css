@@ -2075,6 +2075,10 @@ a:focus-visible {
     margin: 0 auto;
   }
 
+  .body-detox-section .image-stack img {
+    margin-left: 0;
+  }
+
   .body-detox-layout-2col {
     grid-template-columns: 1fr;
     gap: var(--spacing-xl);

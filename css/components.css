@@ -2065,8 +2065,14 @@ a:focus-visible {
   }
 
   .body-detox-section .body-detox-grid {
-    grid-template-columns: 1fr 1fr;
-    gap: var(--spacing-md);
+    grid-template-columns: 1fr;
+    gap: var(--spacing-lg);
+  }
+
+  .body-detox-section .image-stack {
+    display: flex;
+    justify-content: center;
+    margin: 0 auto;
   }
 
   .body-detox-layout-2col {

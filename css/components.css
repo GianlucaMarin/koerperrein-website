@@ -2700,6 +2700,10 @@ a:focus-visible {
     padding: var(--spacing-xl);
   }
 
+  .contact-info-wrapper .section-title {
+    font-size: var(--font-size-xl);
+  }
+
   .form-checkbox-label {
     font-size: 0.875rem;
   }
